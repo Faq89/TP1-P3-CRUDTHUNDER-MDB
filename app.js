@@ -5,14 +5,11 @@ const app = express();
 
 const router = express.Router();
 
-
-
 router.post("/", async (req, res)=>{
     const body = req.body;
     const respuesta = await ModelUser.create(body)
     res.send(body)
 });
-
 
 router.get("/", async(req, res)=>{
     const respuesta = await ModelUser.find({})
@@ -37,8 +34,6 @@ router.delete("/:id", async(req, res)=>{
     const respuesta = await ModelUser.deleteOne({_id: id})
     res.send(respuesta)
 });
-
-
 
 app.use(express.json());
 app.use(router);
